@@ -4,10 +4,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-google-maps/api": "^1.9.7",
     "bootstrap": "^4.2.1",
     "fusioncharts": "^3.13.3-sr.1",
     "fusionmaps": "^3.13.1-sr.1",
-    "react": "^16.7.0",
+    "google-map-react": "^1.1.7",
+    "react": "^16.13.1",
     "react-dom": "^16.7.0",
     "react-dropdown": "^1.6.4",
     "react-fusioncharts": "^3.0.0",

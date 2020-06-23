@@ -1,5 +1,5 @@
 window.FusionCharts.register("theme", {
-  name: "ecommerce",
+  name: "covid",
   theme: {
     base: {
       chart: {
