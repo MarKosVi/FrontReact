@@ -47,7 +47,7 @@ window.FusionCharts.register("theme", {
         captionFontColor: "#8091ab",
         paletteColors: "#1D91C0",
         valuePadding: "5",
-        yAxisName: "Orders",
+        yAxisName: "Período de Análise",
         yAxisNameAlpha: "50",
         yAxisNameFontSize: "12",
         yAxisNamePadding: "20",
