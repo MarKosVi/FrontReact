@@ -1,5 +1,5 @@
 {
-  "name": "ecommerce-dashboard",
+  "name": "dashboard",
   "homepage": "https://sikrigagan.github.io/online-retail-dashboard/",
   "version": "0.1.0",
   "private": true,
@@ -9,11 +9,13 @@
     "fusioncharts": "^3.13.3-sr.1",
     "fusionmaps": "^3.13.1-sr.1",
     "google-map-react": "^1.1.7",
+    "google-maps-react": "^2.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.7.0",
     "react-dropdown": "^1.6.4",
     "react-fusioncharts": "^3.0.0",
     "react-scripts": "2.1.3",
+    "s": "^1.0.0",
     "styled-components": "^4.1.3"
   },
   "scripts": {
@@ -36,5 +38,9 @@
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.7.0",
     "gh-pages": "^2.0.1"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/MarKosVi/FrontReact.git",
+  "author": "Marcos <mfonsecabarros@gmail.com>",
+  "license": "MIT"
 }

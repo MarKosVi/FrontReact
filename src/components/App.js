@@ -12,8 +12,14 @@ import "./charts-theme";
 import config from "./config";
 import Dropdown from "react-dropdown";
 import formatNum from "./format-number";
+import MapContainer from "./MapContainer";
 
 import UserImg from "../assets/images/user.png";
+import Img1 from "../assets/images/tela1img.png";
+import Img2 from "../assets/images/tela2img.png";
+import Img3 from "../assets/images/tela3img.png";
+import Img4 from "../assets/images/tela4img.png";
+import Img5 from "../assets/images/tela5img.png";
 
 ReactFC.fcRoot(FusionCharts, Charts, Maps, USARegion);
 
@@ -58,18 +64,16 @@ class App extends Component {
     return (
       <Container>
         <Nav className="navbar fixed-top nav-primary is-dark is-light-text">
-          <Container className="text-medium">DashBoard</Container>
+          <Container className="text-medium">Covid-19</Container>
           <Container className="navbar-nav">
           <Container className="user-detail-section">
-            <span className="pr-2">Hello, user</span>
+            <span className="pr-2">Olá, user</span>
             <span className="img-container">
               <img src={UserImg} className="rounded-circle" alt="user" />
             </span>
           </Container>
           </Container>
         </Nav>
-
-        {/* content area start */}
         <Container className="container-fluid pr-2 pl-2 pt-0 pb-2">
         <Container className="row">
           <Container className="col-lg-12 col-sm-12 is-light-text mb-4">
@@ -77,24 +81,30 @@ class App extends Component {
               <Container className="card-heading">
                 <Container className="is-dark-text-light letter-spacing text-small">
                 <div class="carousel-inner">
-  <div class="carousel-item active">
-
-  </div>
-  <div class="carousel-item">
-
-  </div>
-  <div class="carousel-item">
-
-  </div>
-</div>
-<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="sr-only">Previous</span>
-</a>
-<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="sr-only">Next</span>
-</a>
+                <div class="carousel-item active">
+                  <img src={Img1} className="w-100" alt="user" />
+                </div>
+                <div class="carousel-item">
+                  <img src={Img2} className="w-100" alt="user" />
+                </div>
+                <div class="carousel-item">
+                  <img src={Img3} className="w-100" alt="user" />
+                </div>
+                <div class="carousel-item">
+                  <img src={Img4} className="w-100" alt="user" />
+                </div>
+                <div class="carousel-item">
+                  <img src={Img5} className="w-100" alt="user" />
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
                 </Container>
               </Container>
 
@@ -204,7 +214,20 @@ class App extends Component {
               </Container>
             </Container>
           </Container>
+
+          <Container className="row">
+            <Container className="col-md-12 mb-4">
+              <Container className="card is-card-dark chart-card">
+                <Container className="chart-container large full-height">
+                <MapContainer/>
+                </Container>
+              </Container>
+            </Container>
+          </Container>
+        
+
         </Container>
+        
         {/* content area end */}
       </Container>
     );
