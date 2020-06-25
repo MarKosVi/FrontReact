@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Container } from "./styled-components";
 import { Carousel } from 'react-bootstrap';
 
+import img0 from "../assets/images/telaimg.png";
 import img1 from "../assets/images/tela1img.png";
 import img2 from "../assets/images/tela2img.png";
 import img3 from "../assets/images/tela3img.png";
+import img4 from "../assets/images/tela4img.png";
+import img5 from "../assets/images/tela5img.png";
 
 function ControlledCarousel() {
   const [index, setIndex] = useState(0);
@@ -18,39 +20,44 @@ function ControlledCarousel() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="../assets/images/tela1img.png?text=First slide&bg=373940"
-          alt="First slide"
+          src={img0}
+          alt="Primeiro slide"
         />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400 text=Second slide&bg=282c34"
-          alt="Second slide"
+          src={img1}
+          alt="Primeiro slide"
         />
-
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400 text=Third slide&bg=20232a"
-          alt="Third slide"
+          src={img2}
+          alt="Segundo slide"
         />
-
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={img3}
+          alt="Terceiro slide"
+        />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={img4}
+          alt=" Quarto slide"
+        />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={img5}
+          alt="Quinto slide"
+        />
       </Carousel.Item>
     </Carousel>
   );

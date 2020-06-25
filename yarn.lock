@@ -8406,6 +8406,14 @@ react-app-polyfill@^0.2.0:
     raf "3.4.0"
     whatwg-fetch "3.0.0"
 
+react-bootstrap-carousel@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-carousel/-/react-bootstrap-carousel-4.0.6.tgz#294863e5c4b151a5847dbb1e45a86131dd85c4f6"
+  integrity sha512-VKJsEIZT7XW7iIc8++Gl1nsVAbOBJfKGV5BYIxGvo4x2QGFaQZOhpRg11/19Kz63xtQBnkpXmrJWmdTJU4hd7A==
+  dependencies:
+    react "^16.13.1"
+    react-dom "^16.13.1"
+
 react-bootstrap@0.33.1:
   version "0.33.1"
   resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-0.33.1.tgz#e072592aa143b9792526281272eca754bc9a4940"
@@ -8454,7 +8462,7 @@ react-dev-utils@^7.0.1:
     strip-ansi "4.0.0"
     text-table "0.2.0"
 
-react-dom@^16.7.0:
+react-dom@^16.13.1, react-dom@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.1.tgz#c1bd37331a0486c078ee54c4740720993b2e0e7f"
   integrity sha512-81PIMmVLnCNLO/fFOQxdQkvEq/+Hfpv24XNJfpyZhTRfO0QcmQIF/PgCa1zCOj2w1hrn12MFLyaJ/G0+Mxtfag==
