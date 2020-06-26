@@ -18,11 +18,11 @@ export default function Login(){
     }
 
     return(
-      
+
       <Container className="container">
       <Container className="row">
-            <Container className="col-md-12 mb-4">
-              <Container className="card is-card-dark chart-card rounded p-4">
+            <Container className="col-md-12 mb-5">
+              <Container className="card w-50 mx-auto is-card-dark chart-card rounded pt-5">
               <img src={UserImg} className="rounded-circle mx-auto" alt="user" />
               <div className="Login">
                 <form onSubmit={handleSubmit}>
@@ -43,8 +43,8 @@ export default function Login(){
                       type="password"
                     />
                   </FormGroup>
-                  <Button className="btn btn-primary" block bsSize="large" disabled={!validateForm()} type="submit">
-                    Login
+                  <Button className="btn btn-primary font-weight-bold text-large " block bsSize="large" disabled={!validateForm()} type="submit">
+                    Entrar
                   </Button>
                 </form>
               </div>
