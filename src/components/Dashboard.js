@@ -8,18 +8,11 @@ import Maps from "fusioncharts/fusioncharts.maps";
 import USARegion from "fusionmaps/maps/es/fusioncharts.usaregion";
 import ReactFC from "react-fusioncharts";
 import "./charts-theme";
+import Navs from "./Navs.js";
 
 import config from "./config";
 import Dropdown from "react-dropdown";
 import formatNum from "./format-number";
-import MapContainer from "./MapContainer";
-
-import UserImg from "../assets/images/user.png";
-import Img1 from "../assets/images/tela1img.png";
-import Img2 from "../assets/images/tela2img.png";
-import Img3 from "../assets/images/tela3img.png";
-import Img4 from "../assets/images/tela4img.png";
-import Img5 from "../assets/images/tela5img.png";
 
 ReactFC.fcRoot(FusionCharts, Charts, Maps, USARegion);
 
@@ -63,7 +56,7 @@ class Dashboard extends Component {
   render() {
     return (
         <Container className="container-fluid pr-2 pl-2 pt-0 pb-2">
-          {/* row 1 - revenue */}
+          <Navs/>
           <Container className="row">
             <Container className="col-lg-3 col-sm-6 is-light-text mb-4">
               <Container className="card grid-card is-card-dark">
@@ -163,17 +156,6 @@ class Dashboard extends Component {
               </Container>
             </Container>
           </Container>
-
-          <Container className="row">
-            <Container className="col-md-12 mb-4">
-              <Container className="card is-card-dark chart-card">
-                <Container className="chart-container large full-height">
-                <MapContainer/>
-                </Container>
-              </Container>
-            </Container>
-          </Container>
-        
 
         </Container>
     );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container } from "./styled-components";
 import ControlledCarousel from './ControlledCarousel.js';
 import "./Home.css";
+import Navs from "./Navs.js";
 
 import oque from "../assets/images/oqueé.png";
 import sintomas from "../assets/images/sintomas.png";
@@ -13,6 +14,7 @@ class Home extends Component {
     render() {
       return (
     <Container className="container-fluid pt-0 pb-0">
+      <Navs />
     <Container className="row">
         <Container className="col-md-12 mb-4">
         <Container className="card is-card-dark">
