@@ -1,7 +1,8 @@
 import React, { Component  } from "react";
 import { Container } from "./styled-components";
 import Navs from "./Navs.js";
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, InforWindow, GoogleApiWrapper, Marker } from 'google-maps-react';
+import "./Map.css";
 
 import config from "./config";
 
@@ -38,6 +39,7 @@ export class MapContainer extends Component {
     return (
         <Container>
           <Navs/>
+          <h1 className="indexMap" >Mapa de casos</h1>
           <Container>
         <Map
           google={this.props.google}
@@ -53,5 +55,5 @@ export class MapContainer extends Component {
   }
 }
   export default GoogleApiWrapper({
-    apiKey: {config}
+    apiKey: "AIzaSyD22Pl2WKLpgt7M6F7bMhLUsfUC0FGYsiQ"
   })(MapContainer);

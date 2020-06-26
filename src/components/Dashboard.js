@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container } from "./styled-components";
-
+import "./Dashboard.css";
 // fusioncharts
 import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";
@@ -95,6 +95,7 @@ class Dashboard extends React.Component {
     return (
         <Container className="container-fluid pr-2 pl-2 pt-0 pb-2">
           <Navs/>
+          <h1 className="indexDash">Dashboard</h1>
           <Container className="row">
             <Container className="col-lg-3 col-sm-6 is-light-text mb-4">
               <Container className="card grid-card is-card-dark">
