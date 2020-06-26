@@ -20,7 +20,8 @@ const url = `https://sheets.googleapis.com/v4/spreadsheets/${
   config.spreadsheetId
 }/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=${config.apiKey}`;
 
-class Dashboard extends Component {
+class Dashboard extends React.Component {
+
   constructor() {
     super();
     this.state = {
@@ -31,25 +32,50 @@ class Dashboard extends Component {
       recuperados: 1000,
       total: 1000,
       evolucaoCasos: [{
-            "label": "Bakersfield Central",
+            "label": "Cidade A",
             "value": "8800"
         },
         {
-            "label": "Garden Groove harbour",
+            "label": "Cidade B",
             "value": "7300"
         },
         {
-            "label": "Los Angeles Topanga",
+            "label": "Cidade C",
             "value": "5900"
         },
         {
-            "label": "Compton-Rancho Dom",
+            "label": "Cidade D",
             "value": "5200"
         },
         {
-            "label": "Daly City Serramonte",
+            "label": "Cidade E",
             "value": "3300"
-        }]
+        }],
+
+        evolucaoGeral: [{
+        label: "Jan",
+        value: "1"
+      },
+      {
+        label: "Feb",
+        value: "5"
+      },
+      {
+        label: "Mar",
+        value: "10"
+      },
+      {
+        label: "Apr",
+        value: "12"
+      },
+      {
+        label: "May",
+        value: "14"
+      },
+      {
+        label: "Jun",
+        value: "16"
+      }],
     };
   }
 
@@ -132,7 +158,7 @@ class Dashboard extends Component {
 
           {/* row 3 - orders trend */}
           <Container className="row" style={{ minHeight: "400px" }}>
-            <Container className="col-md-12 mb-4">
+            <Container className="col-md-6 mb-4">
               <Container className="card is-card-dark chart-card">
                 <Container className="chart-container large full-height">
                   <ReactFC
@@ -146,7 +172,7 @@ class Dashboard extends Component {
                       dataSource: {
                         chart: {
                           theme: "covid",
-                          caption: "Evolução dos casos",
+                          caption: "Casos Registrados",
                         },
                         data: this.state.evolucaoCasos
                       }
@@ -155,9 +181,33 @@ class Dashboard extends Component {
                 </Container>
               </Container>
             </Container>
+            <Container className="col-md-6 mb-4">
+              <Container className="card is-card-dark chart-card">
+                <Container className="chart-container large full-height">
+                  <ReactFC
+                    {...{
+                      type: "line",
+                      width: "100%",
+                      height: "100%",
+                      dataFormat: "json",
+                      containerBackgroundOpacity: "0",
+                      dataEmptyMessage: "Loading Data...",
+                      dataSource: {
+                        chart: {
+                          theme: "covid",
+                          caption: "Casos Registrados",
+                        },
+                        data: this.state.evolucaoGeral
+                      }
+                    }}
+                  />
+                </Container>
+              </Container>
+            </Container>
+          </Container>
           </Container>
 
-        </Container>
+
     );
   }
 }

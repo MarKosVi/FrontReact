@@ -77,6 +77,21 @@ window.FusionCharts.register("theme", {
       }
     },
 
+    line: {
+      chart: {
+    caption: "Casos registrados no brasil",
+    yaxisname: "Número de casos",
+    anchorradius: "8",
+    plottooltext: "Numero de casos <b>$dataValue</b>",
+    showhovereffect: "1",
+    showvalues: "0",
+    numbersuffix: "k",
+    theme: "gammel",
+    anchorbgcolor: "#72D7B2",
+    palettecolors: "#72D7B2"
+    }
+  },
+
     geo: {
       chart: {
         captionFontSize: "14",
