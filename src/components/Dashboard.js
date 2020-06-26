@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
         },
         {
             "label": "Cidade C",
-            "value": "5900"
+            "value": "590"
         },
         {
             "label": "Cidade D",
@@ -49,7 +49,19 @@ class Dashboard extends React.Component {
         },
         {
             "label": "Cidade E",
-            "value": "3300"
+            "value": "8300"
+        },
+        {
+            "label": "Cidade F",
+            "value": "900"
+        },
+        {
+            "label": "Cidade G",
+            "value": "10200"
+        },
+        {
+            "label": "Cidade H",
+            "value": "3500"
         }],
 
         evolucaoGeral: [{
@@ -172,7 +184,7 @@ class Dashboard extends React.Component {
                       dataSource: {
                         chart: {
                           theme: "covid",
-                          caption: "Casos Registrados",
+                          caption: "Casos Registrados: Cidades",
                         },
                         data: this.state.evolucaoCasos
                       }
@@ -195,7 +207,7 @@ class Dashboard extends React.Component {
                       dataSource: {
                         chart: {
                           theme: "covid",
-                          caption: "Casos Registrados",
+                          caption: "Casos Registrados: Brasil",
                         },
                         data: this.state.evolucaoGeral
                       }

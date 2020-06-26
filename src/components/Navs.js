@@ -12,9 +12,9 @@ function Navs(){
         <Container className="container">
           <Container className="text-large">
           <img src={logo} className="imgSize"  alt="logo" />Covid-19
-          <span className="text-white pl-5 ml-md-5 pr-md-2"><Link to="/">Home</Link></span>
-          <span className="text-white pl-4 pr-2"><Link to="/MapContainer">Mapa</Link></span>
-          <span className="text-white pl-4 pr-2"><Link to="/Dashboard">Dashboard</Link></span>
+          <span className="text-white pl-5 ml-md-5 pr-md-2"><Link className="linker" to="/">Home</Link></span>
+          <span className="text-white pl-4 pr-2"><Link className="linker" to="/MapContainer">Mapa</Link></span>
+          <span className="text-white pl-4 pr-2"><Link className="linker " to="/Dashboard">Dashboard</Link></span>
           </Container>
           <Container className="row justify-content-end use">
             <Container className="navbar-nav m-4">
