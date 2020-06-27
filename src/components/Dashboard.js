@@ -193,8 +193,8 @@ class Dashboard extends React.Component {
           </Container>
 
           {/* row 3 - orders trend */}
-          <Container className="row" style={{ minHeight: "400px" }}>
-            <Container className="col-md-6 mb-4">
+          <Container className="row" style={{ minHeight: "600px" }}>
+            <Container className="col-md-12 mb-4">
               <Container className="card is-card-dark chart-card">
                 <Container className="chart-container large full-height">
                   <ReactFC
@@ -217,29 +217,7 @@ class Dashboard extends React.Component {
                 </Container>
               </Container>
             </Container>
-            <Container className="col-md-6 mb-4">
-              <Container className="card is-card-dark chart-card">
-                <Container className="chart-container large full-height">
-                  <ReactFC
-                    {...{
-                      type: "line",
-                      width: "100%",
-                      height: "100%",
-                      dataFormat: "json",
-                      containerBackgroundOpacity: "0",
-                      dataEmptyMessage: "Loading Data...",
-                      dataSource: {
-                        chart: {
-                          theme: "covid",
-                          caption: "Casos Registrados: Brasil",
-                        },
-                        data: this.state.evolucaoGeral,
-                      },
-                    }}
-                  />
-                </Container>
-              </Container>
-            </Container>
+            
           </Container>
         </Container>
       );
