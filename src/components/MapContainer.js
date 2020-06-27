@@ -31,7 +31,7 @@ export class MapContainer extends Component {
   componentDidMount() {
     axios.get("http://localhost:3000/users",{
       params:{
-        user:"teste1"
+        user:"teste3"
       }
     })
     .then(res=> res.data)
@@ -74,7 +74,6 @@ export class MapContainer extends Component {
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-console.log(stores)
       return (
         <Container>
           <Navs/>

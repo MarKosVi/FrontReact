@@ -6,7 +6,7 @@ import "./App.css";
 import logo from "../assets/images/logo.png";
 import UserImg from "../assets/images/user.png";
 
-function Navs(){
+function Navs(props){
     return (
       <Nav className="nav p-2 fixed-top nav-primary is-dark is-light-text">
         <Container className="container">
@@ -19,7 +19,7 @@ function Navs(){
           <Container className="row justify-content-end use">
             <Container className="navbar-nav m-4">
               <Container className="user-detail-section">
-                <span className="pr-4">Olá, user</span>
+                <span className="pr-4">Olá, {props.name}</span>
                 <span className="img-container">
                   <img src={UserImg} className="rounded-circle" alt="user" />
                 </span>
