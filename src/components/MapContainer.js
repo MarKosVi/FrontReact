@@ -3,6 +3,7 @@ import { Container } from "./styled-components";
 import Navs from "./Navs.js";
 import { Map, InforWindow, GoogleApiWrapper, Marker } from 'google-maps-react';
 import "./Map.css";
+import axios from "axios"
 
 import config from "./config";
 
@@ -16,27 +17,65 @@ export class MapContainer extends Component {
     super(props);
 
     this.state = {
-      stores: [{lat: 47.49855629475769, lng: -122.14184416996333},
-              {latitude: 47.359423, longitude: -122.021071},
-              {latitude: 47.2052192687988, longitude: -121.988426208496},
-              {latitude: 47.6307081, longitude: -122.1434325},
-              {latitude: 47.3084488, longitude: -122.2140121},
-              {latitude: 47.5524695, longitude: -122.0425407}]
+      user:{
+        error: null,
+        isLoaded: false,
+        items: {},
+        stores: []
+      }
     };
+
+
   }
 
-  displayMarkers = () => {
-    return this.state.stores.map((store, index) => {
+  componentDidMount() {
+    axios.get("http://localhost:3000/users",{
+      params:{
+        user:"teste1"
+      }
+    })
+    .then(res=> res.data)
+    .then(result=>{
+      
+      const user={ name:result.user[0].name,lat: result.user[0]["location"]["coordinates"][1], lng: result.user[0]["location"]["coordinates"][0]}
+      const stores = result.stores.map(e=>{
+        return {name: e.name, lat: e["location"]["coordinates"][1], lng: e["location"]["coordinates"][0]}
+      })
+      stores.push(user)
+
+     this.setState({
+        isLoaded: true,
+        items: user,
+        stores:stores
+      },(error) => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      }
+    )
+    })
+  }
+
+  displayMarkers = (stores) => {
+    return stores.map((store, index) => {
       return <Marker key={index} id={index} position={{
-       lat: store.latitude,
-       lng: store.longitude
+       lat: store.lat,
+       lng: store.lng
      }}
-     onClick={() => console.log("You clicked me!")} />
+     onClick={() => console.log(`${store.name}`)} />
     })
   }
 
   render() {
-    return (
+    const { error, isLoaded, items,stores } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+console.log(stores)
+      return (
         <Container>
           <Navs/>
           <h1 className="indexMap" >Mapa de casos</h1>
@@ -45,15 +84,18 @@ export class MapContainer extends Component {
           google={this.props.google}
           zoom={8}
           style={mapStyles}
-          initialCenter={{ lat: 47.444, lng: -122.176}}
+          initialCenter={items}
         >
-          {this.displayMarkers()}
+          {this.displayMarkers(stores) }
         </Map>
         </Container>
         </Container>
-    );
+    );  
+
+    }
   }
 }
+
   export default GoogleApiWrapper({
     apiKey: "AIzaSyD22Pl2WKLpgt7M6F7bMhLUsfUC0FGYsiQ"
   })(MapContainer);
