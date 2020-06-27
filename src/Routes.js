@@ -8,6 +8,7 @@ import Oque from "./components/infoPage/Oque";
 import Sintomas from "./components/infoPage/Sintomas";
 import Proteger from "./components/infoPage/Proteger";
 import Trasmicao from "./components/infoPage/Trasmicao";
+import Cadastrar from "./components/Cadastrar";
 
 export default function Routes() {
     return (
@@ -35,6 +36,9 @@ export default function Routes() {
         </Route>
         <Route exact path="/trasmicao">
             <Trasmicao />
+        </Route>
+        <Route exact path="/cadastrar">
+            <Cadastrar />
         </Route>
       </Switch>
     );

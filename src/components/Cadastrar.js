@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { Container } from "./styled-components";
-import { Link } from "react-router-dom";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import "./Login.css";
+import "./cadastro.css";
 
-import UserImg from "../assets/images/user.png";
-
-export default function Login(){
+export default function Cadastrar(){
     const [email, setEmail] = useState("");
+    const [nome, setNome] = useState("");
     const [password, setPassword] = useState("");
+    const [municipio, setMunicipio] = useState("");
 
     function validateForm(){
-        return email.length > 0 && password.length > 0;
+        return email.length > 0 && nome.length > 0 && password.length > 0 && municipio.length > 0;
     }
 
     function handleSubmit(event){
+        console.log(this.state.nome);
         event.preventDefault();
     }
 
@@ -24,12 +24,18 @@ export default function Login(){
       <Container className="row">
             <Container className="col-md-12 mb-5">
               <Container className="card w-50 mx-auto is-card-dark chart-card rounded pt-5">
-                <Container className="row m-4">
-                <Link  to="/cadastrar"> <button className="btn btn-light">Cadastrar</button></Link>
-                </Container>
-              <img src={UserImg} className="rounded-circle mx-auto" alt="user" />
-              <div className="Login">
+              <h2 className="text-white pl-4">Cadastrar</h2>
+              <div className="Signup">
                 <form onSubmit={handleSubmit}>
+                <FormGroup controlId="nome" bsSize="large">
+                    <ControlLabel className="text-white text-large">Nome</ControlLabel>
+                    <FormControl
+                      autoFocus
+                      type="text"
+                      value={nome}
+                      onChange={e => setNome(e.target.value)}
+                    />
+                  </FormGroup>
                   <FormGroup controlId="email" bsSize="large">
                     <ControlLabel className="text-white text-large">Email</ControlLabel>
                     <FormControl
@@ -44,11 +50,19 @@ export default function Login(){
                     <FormControl
                       value={password}
                       onChange={e => setPassword(e.target.value)}
-                      type="password"
+                      type="text"
+                    />
+                  </FormGroup>
+                  <FormGroup className="mb-5" controlId="municipio" bsSize="large">
+                    <ControlLabel className="text-white text-large">Informe seu Municipio</ControlLabel>
+                    <FormControl
+                      value={municipio}
+                      onChange={e => setMunicipio(e.target.value)}
+                      type="text"
                     />
                   </FormGroup>
                   <Button className="btn btn-primary font-weight-bold text-large " block bsSize="large" disabled={!validateForm()} type="submit">
-                    Entrar
+                    Cadastrar
                   </Button>
                 </form>
               </div>
