@@ -4,6 +4,10 @@ import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import MapContainer from "./components/MapContainer";
+import Oque from "./components/infoPage/Oque";
+import Sintomas from "./components/infoPage/Sintomas";
+import Proteger from "./components/infoPage/Proteger";
+import Trasmicao from "./components/infoPage/Trasmicao";
 
 export default function Routes() {
     return (
@@ -19,6 +23,18 @@ export default function Routes() {
         </Route>
         <Route exact path="/login">
             <Login />
+        </Route>
+        <Route exact path="/oqueecovid">
+            <Oque />
+        </Route>
+        <Route exact path="/sintomas">
+            <Sintomas />
+        </Route>
+        <Route exact path="/comoseproteger">
+            <Proteger />
+        </Route>
+        <Route exact path="/trasmicao">
+            <Trasmicao />
         </Route>
       </Switch>
     );
