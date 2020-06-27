@@ -1,11 +1,9 @@
 import React, { Component  } from "react";
 import { Container } from "./styled-components";
 import Navs from "./Navs.js";
-import { Map, InforWindow, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, InfoWindow, GoogleApiWrapper, Marker } from 'google-maps-react';
 import "./Map.css";
 import axios from "axios"
-
-import config from "./config";
 
 const mapStyles = {
   width: '100%',
@@ -17,6 +15,9 @@ export class MapContainer extends Component {
     super(props);
 
     this.state = {
+    showingInfoWindow: false,  //Hides or the shows the infoWindow
+    activeMarker: {},          //Shows the active marker upon click
+    selectedPlace: {} ,
       user:{
         error: null,
         isLoaded: false,
@@ -25,21 +26,25 @@ export class MapContainer extends Component {
       }
     };
 
-
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3000/users",{
+    axios.get("http://localhost:8080/users",{
       params:{
-        user:"teste3"
+        user:"teste1"
       }
     })
     .then(res=> res.data)
     .then(result=>{
-      
-      const user={ name:result.user[0].name,lat: result.user[0]["location"]["coordinates"][1], lng: result.user[0]["location"]["coordinates"][0]}
+      console.log(result)
+      const user={ name:result.user[0].name,itens:result.user[0].produtos_doar,lat: result.user[0]["location"]["coordinates"][1], lng: result.user[0]["location"]["coordinates"][0]}
       const stores = result.stores.map(e=>{
-        return {name: e.name, lat: e["location"]["coordinates"][1], lng: e["location"]["coordinates"][0]}
+        return {
+          name: e.name,
+          dados: e.dados,
+          itens:e.produtos_doar,
+          lat: e["location"]["coordinates"][1], 
+          lng: e["location"]["coordinates"][0]}
       })
       stores.push(user)
 
@@ -56,19 +61,42 @@ export class MapContainer extends Component {
     )
     })
   }
-
-  displayMarkers = (stores) => {
+  onMarkerClick= (props, marker, e)=>
+    this.setState({
+    selectedPlace: props,
+    activeMarker: marker,
+    showingInfoWindow: true
+  });
+  
+onClose = props => {
+  if (this.state.showingInfoWindow) {
+    this.setState({
+      showingInfoWindow: false,
+      activeMarker: null
+    });
+  }
+}
+    displayMarkers = (stores) => {
+    
     return stores.map((store, index) => {
-      return <Marker key={index} id={index} position={{
+      return <Marker 
+      key={index} 
+      id={index}
+      name={`Nome:${store.name}, Contato:${store.contato}, itens:${store.itens.length==0?"":store.itmes}`}
+      label={`${store.name}`}
+      position={{
        lat: store.lat,
        lng: store.lng
      }}
-     onClick={() => console.log(`${store.name}`)} />
+     onMouseover={this.onMarkerClick}
+     onClick={this.onMarkerClick}
+     />
     })
   }
 
   render() {
     const { error, isLoaded, items,stores } = this.state;
+
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -81,11 +109,22 @@ export class MapContainer extends Component {
           <Container>
         <Map
           google={this.props.google}
-          zoom={8}
+          zoom={10}
           style={mapStyles}
           initialCenter={items}
         >
-          {this.displayMarkers(stores) }
+          {this.displayMarkers(stores)}
+          {
+             <InfoWindow
+             marker={this.state.activeMarker}
+             visible={true}
+             onClose={this.onClose}
+           >
+             <div>
+               <h4>{this.state.selectedPlace.name}</h4>
+             </div>
+           </InfoWindow>
+          }
         </Map>
         </Container>
         </Container>

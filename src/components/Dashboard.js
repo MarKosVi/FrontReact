@@ -41,9 +41,9 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:3000/municipios/user", {
+      .get(`http://localhost:8080/municipios/user`, {
         params: {
-          user: "teste4",
+          user: "teste1",
         },
       })
       .then((res) => res.data)
@@ -53,13 +53,13 @@ class Dashboard extends React.Component {
             label: e.municipio,
             value: e.covid.confirmados,
           };
-        });
-       const municipiosASC =  municipios.sort((a,b)=>{
+        }).sort((a,b)=>{
           if (a > b) return 1;
           if (b > a) return -1;
-        
           return 0;
         })
+
+        console.log(municipios)
 
         this.setState(
           {
@@ -72,7 +72,7 @@ class Dashboard extends React.Component {
             mortos: parseInt(result.user_municipio.covid.obito),
             recuperados: parseInt(result.user_municipio.covid.recuperados),
             total: parseInt(result.user_municipio.covid.confirmados),
-            evolucaoCasos: municipiosASC,
+            evolucaoCasos: municipios,
             evolucaoGeral: [
               {
                 label: "Jan",
