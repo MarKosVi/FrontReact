@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container } from "./styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory  } from "react-router-dom";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
 
@@ -10,12 +10,15 @@ export default function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const history = useHistory();
+
+
     function validateForm(){
         return email.length > 0 && password.length > 0;
     }
 
     function handleSubmit(event){
-        event.preventDefault();
+        history.push("/");
     }
 
     return(
