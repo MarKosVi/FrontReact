@@ -34,11 +34,11 @@ export default function Login(){
               <div className="Login">
                 <form onSubmit={handleSubmit}>
                   <FormGroup controlId="email" bsSize="large">
-                    <ControlLabel className="text-white text-large">Email</ControlLabel>
+                    <ControlLabel className="text-white text-large">Nome</ControlLabel>
                     <FormControl
                       autoFocus
-                      type="email"
-                      value={text}
+                      type="text"
+                      value={email}
                       onChange={e => setEmail(e.target.value)}
                     />
                   </FormGroup>
