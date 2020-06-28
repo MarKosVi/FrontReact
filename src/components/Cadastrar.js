@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container } from "./styled-components";
+import { Link, useHistory  } from "react-router-dom";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./cadastro.css";
 
@@ -13,9 +14,10 @@ export default function Cadastrar(){
         return email.length > 0 && nome.length > 0 && password.length > 0 && municipio.length > 0;
     }
 
+    const history = useHistory();
+
     function handleSubmit(event){
-        console.log(this.state.nome);
-        event.preventDefault();
+      history.push("/login");
     }
 
     return(
