@@ -9,16 +9,16 @@ const mapStyles = {
   width: '100%',
   height: '100%',
 };
-
+let timer = null;
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-    showingInfoWindow: false,  //Hides or the shows the infoWindow
-    activeMarker: {},          //Shows the active marker upon click
-    selectedPlace: {} ,
-      user:{
+      showingInfoWindow: false,  //Hides or the shows the infoWindow
+      activeMarker: {},          //Shows the active marker upon click
+      selectedPlace: {},
+      user: {
         error: null,
         isLoaded: false,
         items: {},
@@ -28,74 +28,81 @@ export class MapContainer extends Component {
 
   }
 
+
   componentDidMount() {
-    axios.get("http://localhost:8080/users",{
-      params:{
-        user:"teste1"
+    timer = setTimeout(()=>{
+      axios.get("http://localhost:8080/users", {
+      params: {
+        user: "teste1"
       }
     })
-    .then(res=> res.data)
-    .then(result=>{
-      console.log(result)
-      const user={ name:result.user[0].name,itens:result.user[0].produtos_doar,lat: result.user[0]["location"]["coordinates"][1], lng: result.user[0]["location"]["coordinates"][0]}
-      const stores = result.stores.map(e=>{
-        return {
-          name: e.name,
-          dados: e.dados,
-          itens:e.produtos_doar,
-          lat: e["location"]["coordinates"][1], 
-          lng: e["location"]["coordinates"][0]}
-      })
-      stores.push(user)
+      .then(res => res.data)
+      .then(result => {
+        const user = { name: result.user[0].name, itens: result.user[0].produtos_doar, lat: result.user[0]["location"]["coordinates"][1], lng: result.user[0]["location"]["coordinates"][0] }
+        const stores = result.stores.map(e => {
+          return {
+            name: e.name,
+            dados: e.dados,
+            itens: e.produtos_doar,
+            lat: e["location"]["coordinates"][1],
+            lng: e["location"]["coordinates"][0]
+          }
+        })
+        stores.push(user)
 
-     this.setState({
-        isLoaded: true,
-        items: user,
-        stores:stores
-      },(error) => {
         this.setState({
           isLoaded: true,
-          error
-        });
-      }
-    )
-    })
+          items: user,
+          stores: stores
+        }, (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+        )
+      })
+    }, 1000)
   }
-  onMarkerClick= (props, marker, e)=>
+
+  componentWillUnmount() {
+    clearTimeout(timer);
+  }
+
+  onMarkerClick = (props, marker, e) =>
     this.setState({
-    selectedPlace: props,
-    activeMarker: marker,
-    showingInfoWindow: true
-  });
-  
-onClose = props => {
-  if (this.state.showingInfoWindow) {
-    this.setState({
-      showingInfoWindow: false,
-      activeMarker: null
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
     });
+
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
   }
-}
-    displayMarkers = (stores) => {
-    
+  displayMarkers = (stores) => {
+
     return stores.map((store, index) => {
-      return <Marker 
-      key={index} 
-      id={index}
-      name={`Nome:${store.name}, Contato:${store.contato}, itens:${store.itens.length==0?"":store.itmes}`}
-      label={`${store.name}`}
-      position={{
-       lat: store.lat,
-       lng: store.lng
-     }}
-     onMouseover={this.onMarkerClick}
-     onClick={this.onMarkerClick}
-     />
+      return <Marker
+        key={index}
+        id={index}
+        name={`Nome:${store.name}, Contato:${store.contato==null? "(31)99910-02": store.contato}, itens:${store.itens.length == 0 ? "Camisa:1\nMascara:2\nAlcool:10" : store.itmes}`}
+        label={`${store.name}`}
+        position={{
+          lat: store.lat,
+          lng: store.lng
+        }}
+        onClick={this.onMarkerClick}
+      />
     })
   }
 
   render() {
-    const { error, isLoaded, items,stores } = this.state;
+    const { error, isLoaded, items, stores } = this.state;
 
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -104,36 +111,36 @@ onClose = props => {
     } else {
       return (
         <Container>
-          <Navs name="teste4"/>
+          <Navs />
           <h1 className="indexMap" >Mapa de casos</h1>
           <Container>
-        <Map
-          google={this.props.google}
-          zoom={10}
-          style={mapStyles}
-          initialCenter={items}
-        >
-          {this.displayMarkers(stores)}
-          {
-             <InfoWindow
-             marker={this.state.activeMarker}
-             visible={true}
-             onClose={this.onClose}
-           >
-             <div>
-               <h4>{this.state.selectedPlace.name}</h4>
-             </div>
-           </InfoWindow>
-          }
-        </Map>
+            <Map
+              google={this.props.google}
+              zoom={10}
+              style={mapStyles}
+              initialCenter={items}
+            >
+              {this.displayMarkers(stores)}
+              {
+                <InfoWindow
+                  marker={this.state.activeMarker}
+                  visible={this.state.showingInfoWindow}
+                  onClose={this.onClose}
+                >
+                  <div>
+                    <h4>{this.state.selectedPlace.name}</h4>
+                  </div>
+                </InfoWindow>
+              }
+            </Map>
+          </Container>
         </Container>
-        </Container>
-    );  
+      );
 
     }
   }
 }
 
-  export default GoogleApiWrapper({
-    apiKey: "AIzaSyD22Pl2WKLpgt7M6F7bMhLUsfUC0FGYsiQ"
-  })(MapContainer);
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyD22Pl2WKLpgt7M6F7bMhLUsfUC0FGYsiQ"
+})(MapContainer);

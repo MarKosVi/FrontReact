@@ -43,7 +43,7 @@ class Dashboard extends React.Component {
     axios
       .get(`http://localhost:8080/municipios/user`, {
         params: {
-          user: "teste4",
+          user: "teste1",
         },
       })
       .then((res) => res.data)
@@ -54,8 +54,8 @@ class Dashboard extends React.Component {
             value: e.covid.confirmados,
           };
         }).sort((a,b)=>{
-          if (a > b) return 1;
-          if (b > a) return -1;
+          if (a.value < b.value) return 1;
+          if (b.value < a.value) return -1;
           return 0;
         })
 
