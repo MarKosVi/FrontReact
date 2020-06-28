@@ -53,7 +53,7 @@ window.FusionCharts.register("theme", {
         yAxisNamePadding: "20",
         valueFontBold: "0",
         valueFontSize: "12",
-        plotToolText: "<div>$label<br><b>$value orders</b>",
+        plotToolText: "<div>$label<br><b>$value casos</b>",
         captionAlignment: "left",
         captionPadding: "20"
       }

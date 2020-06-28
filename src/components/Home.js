@@ -15,7 +15,7 @@ class Home extends Component {
     render() {
       return (
     <Container className="container-fluid pt-0 pb-0">
-      <Navs />
+      <Navs name="teste4" />
     <Container className="row">
         <Container className="col-md-12 mb-4">
         <Container className="card is-card-dark">

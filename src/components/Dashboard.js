@@ -43,7 +43,7 @@ class Dashboard extends React.Component {
     axios
       .get(`http://localhost:8080/municipios/user`, {
         params: {
-          user: "teste1",
+          user: "teste4",
         },
       })
       .then((res) => res.data)
@@ -131,8 +131,8 @@ class Dashboard extends React.Component {
                 </Container>
 
                 <Container className="card-value pt-1 text-x-large">
-                  <span className="text-large pr-1">%</span>
                   {this.state.total}
+                  <span className="text-large pr-1"> casos</span>
                 </Container>
               </Container>
             </Container>
@@ -149,8 +149,8 @@ class Dashboard extends React.Component {
                 </Container>
 
                 <Container className="card-value pt-4 text-x-large">
-                  <span className="text-large pr-1">%</span>
                   {this.state.suspeitos}
+                  <span className="text-large pr-1"> casos</span>
                 </Container>
               </Container>
             </Container>
@@ -167,8 +167,8 @@ class Dashboard extends React.Component {
                 </Container>
 
                 <Container className="card-value pt-4 text-x-large">
-                  <span className="text-large pr-1">%</span>
                   {this.state.mortos}
+                  <span className="text-large pr-1"> casos</span>
                 </Container>
               </Container>
             </Container>
@@ -185,15 +185,15 @@ class Dashboard extends React.Component {
                 </Container>
 
                 <Container className="card-value pt-4 text-x-large">
-                  <span className="text-large pr-1">%</span>
                   {this.state.recuperados}
+                  <span className="text-large pr-1"> casos</span>
                 </Container>
               </Container>
             </Container>
           </Container>
 
           {/* row 3 - orders trend */}
-          <Container className="row" style={{ minHeight: "600px" }}>
+          <Container className="row" style={{ minHeight: "24000px" }}>
             <Container className="col-md-12 mb-4">
               <Container className="card is-card-dark chart-card">
                 <Container className="chart-container large full-height">
@@ -208,7 +208,7 @@ class Dashboard extends React.Component {
                       dataSource: {
                         chart: {
                           theme: "covid",
-                          caption: "Casos Registrados: Cidades",
+                          caption: "Casos Registrados: Municipios",
                         },
                         data: this.state.evolucaoCasos,
                       },

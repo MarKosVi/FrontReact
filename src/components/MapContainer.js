@@ -104,7 +104,7 @@ onClose = props => {
     } else {
       return (
         <Container>
-          <Navs/>
+          <Navs name="teste4"/>
           <h1 className="indexMap" >Mapa de casos</h1>
           <Container>
         <Map
