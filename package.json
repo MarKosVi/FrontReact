@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "^1.9.7",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.2.1",
     "dotenv": "^8.2.0",
     "fusioncharts": "^3.13.3-sr.1",
